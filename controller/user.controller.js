@@ -26,9 +26,9 @@ class UserController {
 
     async delete(req, res) {
         try {
-            const confirm = await userService.delete(req.user.id);
+            const confirm = await userService.delete(req.params.id);
 
-            console.log(confirm);
+            res.json(confirm);
         } catch (error) {
             res.status(401).json({
                 message: error.message

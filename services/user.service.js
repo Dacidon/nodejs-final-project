@@ -52,6 +52,12 @@ class UserService {
         });
         
     }
+
+    async delete(id) {
+        const confirmation = userRepository.delete(id);
+
+        return confirmation;
+    }
 }
 
 const validation = (fields) => {
