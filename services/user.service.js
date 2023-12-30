@@ -58,6 +58,12 @@ class UserService {
 
         return confirmation;
     }
+
+    async getAll() {
+        const users = userRepository.getAll();
+
+        return users;
+    }
 }
 
 const validation = (fields) => {

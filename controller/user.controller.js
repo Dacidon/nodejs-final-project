@@ -35,6 +35,24 @@ class UserController {
             })
         }
     }
+
+    async getAllUsers(req, res) {
+        try {
+            const users = await userService.getAll();
+
+            res.json(users);
+        } catch (error) {
+            res.status(401).json({
+                message: error.message
+            })
+        }
+    }
+
+    // async permissionChange(req, res) {
+    //     console.log(req.body);
+
+
+    // }
 }
 
 export const userController = new UserController()

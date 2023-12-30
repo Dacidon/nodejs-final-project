@@ -29,8 +29,7 @@ class NewsController {
 
     async update(req, res) {
         try {
-            console.log(req.params);
-            const news = await newsService.update(req.body, req.params);
+            const news = await newsService.update(req.body, req.params.id);
 
             res.json(news);
         } catch (error) {

@@ -29,18 +29,13 @@ class NewsRepository {
   }
 
   async update(dto, id) {
+    await NewsModel.findOneAndUpdate({_id: id}, {
+      text: dto.text,
+      title: dto.title,
+    });
 
-    const newsData = newsDto(dto);
-    
-    // const news = NewsModel.findById({ _id: id });
-
-    // const updatedNews = UserModel.findOneAndUpdate({_id: id}, {
-    //   text: dto.text,
-    //   title: dto.title,
-    // });
-
-    // const allNews = await NewsModel.find({});
-    // return allNews;
+    const allNews = await NewsModel.find({});
+    return allNews;
   }
 
   async delete(id) {

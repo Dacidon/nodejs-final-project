@@ -15,6 +15,7 @@ class NewsService {
     };
     async update(dto, id) {
         const news = await newsRepository.update(dto, id);
+        return news;
     }
 
     async getAllNews() {

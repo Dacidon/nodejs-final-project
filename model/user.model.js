@@ -48,6 +48,12 @@ class UserRepository {
 
     return userDelete;
   }
+
+  async getAll() {
+    const users = UserModel.find({});
+
+    return users;
+  }
 };
 
 
