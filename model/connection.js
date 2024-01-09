@@ -11,7 +11,7 @@ export const mongooseConnect = (url) => {
     console.log('Mongoose connection error: ' + err);
   });
 
-  mongoose.connection.on('connected', () => {
+  mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
   });
 

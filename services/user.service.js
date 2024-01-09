@@ -54,15 +54,21 @@ class UserService {
     }
 
     async delete(id) {
-        const confirmation = userRepository.delete(id);
+        const confirmation = await userRepository.delete(id);
 
         return confirmation;
     }
 
     async getAll() {
-        const users = userRepository.getAll();
+        const users = await userRepository.getAll();
 
         return users;
+    }
+
+    async permissionChange(dto, id) {
+        const confirmation = await userRepository.permissionChange(dto, id);
+
+        return confirmation;
     }
 }
 

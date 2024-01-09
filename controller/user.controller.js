@@ -48,11 +48,19 @@ class UserController {
         }
     }
 
-    // async permissionChange(req, res) {
-    //     console.log(req.body);
+    async permissionChange(req, res) {
+        try {
+            const confirmation = await userService.permissionChange(req.body, req.params.id);
+
+            res.json(confirmation);
+        } catch (error) {
+            res.status(401).json({
+                message: error.message
+            })
+        }
 
 
-    // }
+    }
 }
 
 export const userController = new UserController()

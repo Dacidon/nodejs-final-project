@@ -30,7 +30,7 @@ class UserRepository {
 
     const user = await UserModel.findById({ _id: id });
 
-    const userUpdated = UserModel.findOneAndUpdate({_id: id},{
+    const userUpdated = await UserModel.findOneAndUpdate({_id: id},{
       surName: surName[0],
       firstName: firstName[0],
       middleName: middleName[0],
@@ -38,21 +38,35 @@ class UserRepository {
       image: image[0]
     });
 
-    user.setPassword(password[0]);
+    await user.setPassword(password[0]);
 
     return userUpdated;
   }
 
   async delete(id) {
-    const userDelete = UserModel.deleteOne({_id: id});
+    const userDelete = await UserModel.deleteOne({_id: id});
 
     return userDelete;
   }
 
   async getAll() {
-    const users = UserModel.find({});
+    const users = await UserModel.find({});
+    const newUsers = [];
 
-    return users;
+    users.forEach(element => {
+      const user = userDto(element);
+      newUsers.push(user)
+    });
+
+    return newUsers;
+  }
+
+  async permissionChange(dto, id) {
+    const result = await UserModel.findOneAndUpdate({_id: id}, {
+      permission: dto.permission
+    });
+
+    return result;
   }
 };
 

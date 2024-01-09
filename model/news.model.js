@@ -39,7 +39,7 @@ class NewsRepository {
   }
 
   async delete(id) {
-    const newsDelete = NewsModel.deleteOne({_id: id});
+    const newsDelete = await NewsModel.deleteOne({_id: id});
 
     return newsDelete;
   };

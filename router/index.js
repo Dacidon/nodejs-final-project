@@ -15,7 +15,7 @@ router.get('/news', authMiddleware.authentication, newsController.getAllNews);
 router.post('/news', authMiddleware.authentication, newsController.create);
 router.patch('/news/:id', authMiddleware.authentication, newsController.update)
 router.delete('/news/:id', authMiddleware.authentication, newsController.delete);
-router.get('/users', authMiddleware.authentication,userController.getAllUsers);
-// router.patch('/users/:id/permission', authMiddleware.authentication, userController.permissionChange);
+router.get('/users', authMiddleware.authentication, userController.getAllUsers);
+router.patch('/users/:id/permission', authMiddleware.authentication, userController.permissionChange);
 
 export default router
